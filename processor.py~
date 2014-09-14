@@ -1,0 +1,43 @@
+import random
+import itertools
+import os
+
+class Processor(object):
+
+    def clear(self):
+        #clean of gameboard
+        os.system('clear')
+
+    def get_life(self):
+        #get random life
+        
+        life = lambda:[random.randint(0,1) for n in range(self.row)]
+        
+        return[life() for n in range(self.column)]
+
+    def get_neighbors(self, x, y):
+        #get neighbors
+        count = 0
+        neighbors = list(set(itertools.permutations([-1,-1,1,1,0], 2) ))
+
+        for nx, ny in neighbors:
+            if self.check_coordinates(x + nx, y + ny):
+                count += 1 if self.game[x + nx][y + ny] else 0 
+
+        return count
+
+    def check_coordinates(self, x, y):
+        return (x in range(self.column) and y in range(self.row))
+
+    def rule(self, neighbors):
+        if neighbors < 2 or neighbors > 3:
+            return 0
+        elif neighbors == 3:
+            return 1
+
+    def start_game(self):
+        for x in range(self.column):
+            for y in range(self.row):
+                neighbors = self.get_neighbors(x,y)
+                self.game[x][y] = self.rule(neighbors)
+                

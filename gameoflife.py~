@@ -1,0 +1,47 @@
+#! /usr/bin/python
+# -*- encoding: utf-8 -*-
+
+from processor import Processor
+import timeo
+class GameOfLife(Processor):
+
+    def __init__(self):
+        self.welcome()
+        self.game = self.get_life()
+        
+    def __str__(self):
+        #create mesh
+        mesh = ''
+
+        for row in self.game:
+            for cell in row:
+                mesh += 'X' if cell else '.'
+            mesh += '\n'
+        return mesh
+        
+        
+    def welcome(self):
+        #as
+        print("==============================")
+        print("==============================")
+        print("Welcome to Game Of Life")
+        print("==============================")
+        print("==============================")
+        self.row = int(input("Row: "))
+        self.column = int(input("Column: "))
+        
+    def main(self):
+        #init
+        while True:
+            self.clear()
+            print(self.game)
+            self.start_game()
+            time.sleep(0.5)
+        
+
+
+
+if __name__ == '__main__':
+    #starting with game play
+    game = GameOfLife()
+    game.main()
