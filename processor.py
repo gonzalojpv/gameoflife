@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 import random
 import os
 import itertools
@@ -16,8 +18,9 @@ class Processor(object):
 
         for row in self.game:
             for cell in row:
-                mesh += 'X' if cell else '.'
+                mesh += 'x' if cell else '.'
             mesh += '\n'
+
         return mesh
 
     def clear(self):
@@ -36,7 +39,6 @@ class Processor(object):
         count = 0
         exists_neighbor = lambda x, y: not (x in range(self.row) and y in range(self.column))
 		
-	print(self.game)
 	for i, j in self.neighbors:
             if not exists_neighbor(x + i, y + j):
                 count += 1 if self.game[x + i][y + j] else 0
@@ -55,14 +57,10 @@ class Processor(object):
                     self.game[nf][nc] = 1
                     
     def start(self):
-        sum = 0
-        #self.row = row
-        #self.column = column
         self.random_life()
         
         while True:
-            #self.clear()
+            self.clear()
             print(self.board())
             self.process()
             time.sleep(0.5)
-            sum +=1
