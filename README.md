@@ -23,3 +23,23 @@ https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
 1. Una célula muerta con exactamente 3 células vecinas vivas "nace" (al turno siguiente estará viva).
 2. Una célula viva con 2 ó 3 células vecinas vivas sigue viva, en otro caso muere o permanece muerta (por "soledad" o "superpoblación").
+
+
+<h3>Vecinos</h3>
+<table>
+  <tr>
+    <td>(x-1, y-1)</td>
+    <td>(x-0, y-1)</td>
+    <td>(x+1, y-1)</td>
+  </tr>
+  <tr>
+    <td>(x-1, y-0)</td>
+    <td>(x-0, y-0)</td>
+    <td>(x+1, y-0)</td>
+  </tr>
+  <tr>
+    <td>(x-1, y+1)</td>
+    <td>(x-0, y+1)</td>
+    <td>(x+1, y+1)</td>
+  </tr>
+</table>
